@@ -37,7 +37,7 @@ float promedioNivelDulzura(int tableta[FILA][COLUMNA]){
 }
 int main()
 {
-    
+    SetConsoleOutputCP(CP_UTF8);
     int tableta[FILA][COLUMNA];
     agregarNivel(tableta);
     float promedio = promedioNivelDulzura(tableta);
