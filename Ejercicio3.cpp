@@ -9,6 +9,8 @@ ToDo En un tablero de 6x6, un barco enemigo de 3 casillas de largo ha sido coloc
 
 #include <iostream>
 #include <windows.h>
+#include <cstdlib>
+#include <ctime> //Incluyo esta libreria para generar el barco aleatoriamente, ya que sin ella el barco se genera pero no cambia de lugar cada que se inicializa el programa.
 using namespace std;
 
 const int FILAS = 6;
@@ -36,7 +38,13 @@ void mostrarMapa(string mapa[FILAS][COLUMNAS]){
 }
 
 void generarBarco(string mapa[FILAS][COLUMNAS]){
-    //Falta ocmpletar
+    int fila = rand()%FILAS;
+    int columna = rand()%(COLUMNAS-2);
+    for (int i = 0; i < 3; i++) {
+    mapa[fila][columna + i] = "B";
+}
+
+
 }
 bool disparoValido(string mapa[FILAS][COLUMNAS]){
     int x,y;
@@ -64,9 +72,11 @@ bool disparoValido(string mapa[FILAS][COLUMNAS]){
 
 int main()
 {
+    srand(time(NULL)); //Función de la librería ctime, sirve para que rand() genere numeros diferentes cada que se ejecute
     SetConsoleCP(CP_UTF8);
     string tablero[FILAS][COLUMNAS];
     generarMapa(tablero);
+    generarBarco(tablero);
     mostrarMapa(tablero);
     if (disparoValido(tablero)){
         cout<<"Haz destruido el barco!";
